@@ -53,7 +53,7 @@ export default function Home() {
           <meta name="description" content="Weather Application" />
           <title>Weather App</title>
         </Head>
-        <div className="absolute top-0 left-0 bottom-0 right-0 bg-black/40 z-[1]" />
+        {/* <div className="hidden md:absolute top-0 left-0 bottom-0 right-0 bg-black/40 z-[1]" /> */}
         {/* <Image src={bgImage} alt="/" layout="fill" className="object-cover" /> */}
         <div className="relative flex justify-between items-center max-w-[500px] w-full p-4 text-white z-10">
           <form
