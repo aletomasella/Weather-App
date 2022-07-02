@@ -17,11 +17,7 @@ export default function Home() {
     e.preventDefault();
     setLoading(true);
     axios
-      .get(
-        `${api.getWeather}${city}&appid=${
-          process.env.API_KEY || "193475fcf94675621c43aab693d27441"
-        }`
-      )
+      .get(`${api.getWeather}${city}&appid=${process.env.API_KEY}`)
       .then((res) => {
         setWeather((prev) => {
           const includedData = prev.filter((e) => e.id === res.data.id);
@@ -37,6 +33,12 @@ export default function Home() {
     setCity("");
   };
 
+  const removeCity = (id) => {
+    return setWeather((prev) => {
+      return prev.filter((e) => e.id !== id);
+    });
+  };
+
   const handleInput = (e) => {
     setCity(e.target.value);
   };
@@ -50,7 +52,7 @@ export default function Home() {
           <title>Weather App</title>
         </Head>
         <div className="absolute top-0 left-0 bottom-0 right-0 bg-black/40 z-[1]" />
-        <Image src={bgImage} alt="/" layout="fill" className="object-cover" />
+        {/* <Image src={bgImage} alt="/" layout="fill" className="object-cover" /> */}
         <div className="relative flex justify-between items-center max-w-[500px] w-full p-4 text-white z-10">
           <form
             onSubmit={getWeather}
@@ -82,7 +84,7 @@ export default function Home() {
                 // console.log(e);
                 return (
                   <div key={e.id}>
-                    <Weather data={e} />
+                    <Weather data={e} removeCity={removeCity} />
                   </div>
                 );
               })}

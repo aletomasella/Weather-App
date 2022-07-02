@@ -21,3 +21,9 @@
     transform: rotate(360deg);
   }
 }
+
+html {
+  background-image: url("../public/assets/bgImage.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
