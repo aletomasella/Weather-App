@@ -22,9 +22,19 @@ export default function Home() {
           process.env.API_KEY || "193475fcf94675621c43aab693d27441"
         }`
       )
-      .then((res) => setWeather((prev) => [...prev, res.data]))
+      .then((res) => {
+        setWeather((prev) => {
+          const includedData = prev.filter((e) => e.id === res.data.id);
+          if (includedData.length) {
+            return [...prev];
+          } else {
+            return [...prev, res.data];
+          }
+        });
+      })
       .catch((err) => console.log(err.message))
       .finally(() => setLoading(false));
+    setCity("");
   };
 
   const handleInput = (e) => {
@@ -33,7 +43,7 @@ export default function Home() {
 
   return (
     <>
-      <div>
+      <div className="h-full">
         <Head>
           <title>Create Next App</title>
           <meta name="description" content="Weather Application" />
@@ -66,7 +76,7 @@ export default function Home() {
         {loading ? (
           <Loader />
         ) : (
-          <div>
+          <div className="flex flex-wrap">
             {weather &&
               weather.map((e) => {
                 // console.log(e);
