@@ -17,7 +17,9 @@ export default function Home() {
     e.preventDefault();
     setLoading(true);
     axios
-      .get(`${api.getWeather}${city}&appid=${process.env.API_KEY}`)
+      .get(
+        `${api.getWeather}${city}&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}`
+      )
       .then((res) => {
         setWeather((prev) => {
           const includedData = prev.filter((e) => e.id === res.data.id);
