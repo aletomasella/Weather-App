@@ -55,7 +55,7 @@ export default function Home() {
         </Head>
         {/* <div className="hidden md:absolute top-0 left-0 bottom-0 right-0 bg-black/40 z-[1]" /> */}
         {/* <Image src={bgImage} alt="/" layout="fill" className="object-cover" /> */}
-        <div className="relative flex justify-between items-center max-w-[500px] w-full p-4 text-white z-10">
+        <div className="relative flex justify-between items-center max-w-[500px] w-full p-4 text-white z-10 m-auto">
           <form
             onSubmit={getWeather}
             className="flex justify-between items-center w-full m-auto bg-transparent border border-gray-400 rounded-2xl p-3"
@@ -67,7 +67,7 @@ export default function Home() {
                 value={city}
                 placeholder="Search city"
                 onChange={handleInput}
-                className="bg-transparent border-none focus:outline-none text-2xl"
+                className="bg-transparent border-none focus:outline-none text-2xl w-full"
                 autoComplete="off"
               />
             </div>
